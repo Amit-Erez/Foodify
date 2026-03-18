@@ -11,7 +11,7 @@ const Searchbar = ({ fetchData }) => {
         value={query}
         type="text"
         placeholder="Search the site..."
-        className=" border border-gray-500 rounded pl-4 pt-2 pb-2 text-sm outline-0"
+        className=" border border-gray-500 rounded pl-4 pt-2 pb-2 text-sm outline-0 w-70"
         onChange={(e) => setQuery(e.target.value)}
       />
       <figure

@@ -9,8 +9,8 @@ function App() {
 
   async function fetchData(query) {
     if(!query) return
-    const {data} = await axios.get(`http://www.themealdb.com/api/json/v1/1/search.php?s=${query}`)
-    setResults(data)
+    const {data} = await axios.get(`/api/search.php?s=${query}`)
+    setResults(data.meals)
   }
 
   return (
