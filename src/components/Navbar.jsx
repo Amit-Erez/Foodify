@@ -12,12 +12,10 @@ const Navbar = ({ fetchData }) => {
         <div className="flex items-center">
           <ul className="flex justify-center gap-4 mr-3">
             <li className="text-grey hover:text-emerald-900 transition cursor-pointer">
-              <Link to="/" />
-              Home
+              <Link to="/">Home</Link>
             </li>
             <li className="text-grey hover:text-emerald-900 transition cursor-pointer">
-              <Link to="/meals" />
-              Favorites
+              <Link to="/favorites">Favorites</Link>
             </li>
           </ul>
           <span className="hidden sm:block">

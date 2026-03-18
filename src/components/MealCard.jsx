@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const MealCard = ({ meal }) => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timerId);
+  }, []);
+
   return (
-    <div className="bg-blue-100 flex flex-col border rounded-2xl overflow-hidden max-w-70 md:max-w-60 h-90 cursor-pointer">
+    <>
+    {isLoading ? 
+    <div className="bg-gray-600 rounded-2xl overflow-hidden w-70 md:w-60 h-90 shadow-2xl animate-pulse">
+
+    </div>
+    :
+    <Link to={`/details/${meal.idMeal}`}>
+    <div className="bg-blue-100 flex flex-col border rounded-2xl overflow-hidden max-w-70 md:max-w-60 h-100 md:h-90 cursor-pointer shadow-2xl hover:scale-102 transition-all">
       <figure>
         <img
           src={meal.strMealThumb}
@@ -15,6 +33,10 @@ const MealCard = ({ meal }) => {
         <p>{meal.strArea}</p>
       </div>
     </div>
+    </Link>
+    
+    }
+    </>
   );
 };
 
