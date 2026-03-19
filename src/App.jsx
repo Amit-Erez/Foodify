@@ -4,10 +4,10 @@ import Navbar from "./components/Navbar";
 import { useState } from "react";
 import axios from "axios";
 import MealInfo from "./pages/MealInfo";
+import Footer from "./components/Footer";
 
 function App() {
   const [results, setResults] = useState([])
-  // const [recipe, setRecipe] = useState([])
 
   async function fetchData(query) {
     if(!query) return
@@ -21,6 +21,7 @@ function App() {
           <Route path="/" element={<Home results={results} />} />
           <Route path="/details/:id" element={<MealInfo />} />
         </Routes>
+        <Footer />
     </>
   );
 }

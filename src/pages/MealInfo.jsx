@@ -27,11 +27,11 @@ const MealInfo = () => {
 
   return (
     <>
-    <div className="flex flex-1 min-h-[calc(100vh-80px)] justify-center bg-[#CFDEF3] pt-20 pl-20 pr-20 mt-40 sm:mt-20">
+    <div className="flex flex-1 min-h-[calc(100vh-80px)] justify-center bg-[#CFDEF3] pt-20 pl-20 pr-20 pb-4 mt-40 sm:mt-20">
       {recipe ? (
           
           <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-[90px_400px_auto] gap-4 max-w-200">
-          <h1 className="text-3xl text-center md:text-left md:text-[48px] col-span-2 h-20 text-[#117777] font-semibold">
+          <h1 className="text-3xl text-center md:text-left md:text-[48px] col-span-2 h-12 md:h-20 text-[#117777] font-semibold">
             {recipe.strMeal}
           </h1>
           <div className="row-3 md:row-2 md:col-1">
@@ -39,12 +39,12 @@ const MealInfo = () => {
             <div className="flex justify-center md:justify-start">
             <ul className="mr-8">
                 {ingr?.map((elem, index) => (
-                    <li key={index}>{elem[1]}:</li>
+                    <li className="p-0.5" key={index}>{elem[1]}:</li>
                 ))}
             </ul>
             <ul>
                 {measures?.map((elem, index) => (
-                    <li key={index}>{elem[1]}</li>
+                    <li className="p-0.5" key={index}>{elem[1]}</li>
                 ))}
             </ul>
             </div>
@@ -54,7 +54,7 @@ const MealInfo = () => {
             <img
               src={recipe.strMealThumb}
               alt="meal photo"
-              className="w-full rounded-2xl overflow-hidden shadow-2xl"
+              className="w-full rounded-[10px] overflow-hidden shadow-2xl"
               />
           </figure>
         </div>

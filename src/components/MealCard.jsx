@@ -20,7 +20,7 @@ const MealCard = ({ meal }) => {
     </div>
     :
     <Link to={`/details/${meal.idMeal}`}>
-    <div className="bg-blue-100 flex flex-col border rounded-2xl overflow-hidden max-w-70 md:max-w-60 h-100 md:h-90 cursor-pointer shadow-2xl hover:scale-102 transition-all">
+    <div className="bg-blue-100 flex flex-col border-white rounded-[10px] overflow-hidden mb-4 max-w-70 md:max-w-60 h-100 md:h-90 cursor-pointer shadow-2xl hover:scale-102 transition-all">
       <figure>
         <img
           src={meal.strMealThumb}
