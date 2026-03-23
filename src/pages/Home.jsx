@@ -4,7 +4,7 @@ import banner from "../assets/eat-illustration.svg";
 import wave from "../assets/wave.svg";
 
 
-const Home = ({ results, addToFaves }) => {
+const Home = ({ results, addToFaves, faves }) => {
   const [count, setCount] = useState();
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const Home = ({ results, addToFaves }) => {
       </div>
       <div className="flex-1 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full max-w-270 justify-items-center pb-20 z-100">
         {results?.slice(0, count).map((meal) => (
-          <MealCard key={meal.idMeal} meal={meal} addToFaves={addToFaves} />
+          <MealCard key={meal.idMeal} meal={meal} addToFaves={addToFaves} faves={faves} />
         ))}
       </div>
       {results.length > 0 && (

@@ -1,9 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const MealCard = ({ meal, addToFaves }) => {
+const MealCard = ({ meal, addToFaves, faves }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [fave, setFave] = useState(false)
+  const [fave, setFave] = useState(null)
+
+  useEffect(() => {
+    function determineFaveStatus(){
+      if(faves.includes(meal.idMeal)) {
+        setFave(true)
+
+      } else setFave(false)
+    }
+
+    determineFaveStatus()
+
+  },[])
+
 
   function addFave(e, id) {
     e.preventDefault()

@@ -32,9 +32,9 @@ function App() {
   return (
     <> <Navbar fetchData={fetchData} />
         <Routes>
-          <Route path="/" element={<Home results={results} addToFaves={addToFaves} />} />
+          <Route path="/" element={<Home results={results} addToFaves={addToFaves} faves={faves} />} />
           <Route path="/details/:id" element={<MealInfo />} />
-          <Route path="/favorites" element={<Favorites faves={faves} />}/>
+          <Route path="/favorites" element={<Favorites faves={faves} addToFaves={addToFaves} />}/>
         </Routes>
         <Footer />
     </>
