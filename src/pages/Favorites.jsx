@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import wave from "../assets/wave.svg";
 
-export const Favorites = ({ faves, addToFaves }) => {
+export const Favorites = ({ faves, editFaves }) => {
   const [faveRecipes, setFaveRecipes] = useState();
-  console.log(faves);
+  const navigate = useNavigate()
 
   async function fetchRecipe(id) {
     if (!id) return;
@@ -26,13 +26,15 @@ export const Favorites = ({ faves, addToFaves }) => {
     getFaveMeals(faves);
   }, [faves]);
 
-  function addFave(e, id) {
+  function determineFave(e, id) {
     e.preventDefault();
-    addToFaves(id);
+    editFaves(id);
   }
 
   return (
     <div className='className="relative flex flex-col bg-[#CFDEF3] min-h-screen items-center p-48 sm:p-40'>
+        <div className="absolute left-[10%] cursor-pointer z-50 text-[#117777] text-2xl bg-white p-1 rounded hover:opacity-50 transition-all"
+        onClick={() => navigate(-1)}>Back</div>
       <h1 className=" text-5xl sm:text-6xl text-[#117777] mb-6 sm:mb-20">
         Favorites
       </h1>
@@ -56,7 +58,7 @@ export const Favorites = ({ faves, addToFaves }) => {
               </h1>
               <div
                 className="absolute right-2 bottom-2 w-6 h-6"
-                onClick={(e) => addFave(e, recipe.idMeal)}
+                onClick={(e) => determineFave(e, recipe.idMeal)}
               >
                 <svg
                   className="faveheart text-red-500 hover:scale-110 transition-all"

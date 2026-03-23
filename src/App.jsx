@@ -10,8 +10,10 @@ import { Favorites } from "./pages/Favorites";
 function App() {
   const [results, setResults] = useState([])
   const [faves, setFaves] = useState([])
+  const [hasSearched, setHasSearched] = useState(false)
 
-  function addToFaves(id) {
+
+  function editFaves(id) {
     if(faves.includes(id)) {
       setFaves(faves.filter(elem => elem !== id))
     } else {
@@ -26,15 +28,20 @@ function App() {
   async function fetchData(query) {
     if(!query) return
     const {data} = await axios.get(`/api/search.php?s=${query}`)
-    setResults(data.meals)
+    if(!data.meals) {
+      setResults([])
+    } else {
+      setResults(data.meals)
+    }
+    setHasSearched(true)
   }
 
   return (
     <> <Navbar fetchData={fetchData} />
         <Routes>
-          <Route path="/" element={<Home results={results} addToFaves={addToFaves} faves={faves} />} />
+          <Route path="/" element={<Home results={results} addToFaves={editFaves} faves={faves} hasSearched={hasSearched} />} />
           <Route path="/details/:id" element={<MealInfo />} />
-          <Route path="/favorites" element={<Favorites faves={faves} addToFaves={addToFaves} />}/>
+          <Route path="/favorites" element={<Favorites faves={faves} addToFaves={editFaves} />}/>
         </Routes>
         <Footer />
     </>
