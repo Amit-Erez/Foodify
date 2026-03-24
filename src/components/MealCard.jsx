@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 const MealCard = ({ meal, editFaves, faves }) => {
   const [isLoading, setIsLoading] = useState(true);
 
-  const isFave = faves.includes(meal.idMeal)
+  const isFave = faves.includes(meal.idMeal);
+  const cardSize = "w-60 md:w-60 h-100 md:h-90";
 
-  function determineFave(e, id) {
+  function toggleFavorite(e, id) {
     e.preventDefault();
     editFaves(id);
   }
@@ -22,10 +23,14 @@ const MealCard = ({ meal, editFaves, faves }) => {
   return (
     <>
       {isLoading ? (
-        <div className="bg-gray-600 rounded-2xl overflow-hidden w-70 md:w-60 h-90 shadow-2xl animate-pulse"></div>
+        <div
+          className={`bg-gray-600 rounded-2xl overflow-hidden mb-4 ${cardSize} shadow-2xl animate-pulse`}
+        ></div>
       ) : (
         <Link to={`/details/${meal.idMeal}`}>
-          <div className="relative bg-blue-100 flex flex-col border-white rounded-[10px] overflow-hidden mb-4 max-w-70 md:max-w-60 h-100 md:h-90 cursor-pointer shadow-2xl hover:scale-102 transition-all">
+          <div
+            className={`relative bg-blue-100 flex flex-col border-white rounded-[10px] overflow-hidden mb-4 ${cardSize} cursor-pointer shadow-2xl hover:scale-102 transition-all`}
+          >
             <figure>
               <img
                 src={meal.strMealThumb}
@@ -39,7 +44,7 @@ const MealCard = ({ meal, editFaves, faves }) => {
             </div>
             <div
               className="absolute right-2 bottom-2 w-6 h-6"
-              onClick={(e) => determineFave(e, meal.idMeal)}
+              onClick={(e) => toggleFavorite(e, meal.idMeal)}
             >
               {isFave ? (
                 <svg

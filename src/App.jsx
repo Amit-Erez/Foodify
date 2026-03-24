@@ -39,9 +39,9 @@ function App() {
   return (
     <> <Navbar fetchData={fetchData} />
         <Routes>
-          <Route path="/" element={<Home results={results} addToFaves={editFaves} faves={faves} hasSearched={hasSearched} />} />
+          <Route path="/" element={<Home results={results} editFaves={editFaves} faves={faves} hasSearched={hasSearched} fetchData={fetchData} />} />
           <Route path="/details/:id" element={<MealInfo />} />
-          <Route path="/favorites" element={<Favorites faves={faves} addToFaves={editFaves} />}/>
+          <Route path="/favorites" element={<Favorites faves={faves} editFaves={editFaves} />}/>
         </Routes>
         <Footer />
     </>
